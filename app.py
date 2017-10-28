@@ -11,7 +11,7 @@ db = client.get_default_database()
 def index():
     return "Hi! Welcome to Intellishoes!"
 
-@app.route('/post_ip_address/<ip_address')
+@app.route('/post_ip_address/<ip_address>')
 def post_ip_address(ip_address):
     return ip_address
 
