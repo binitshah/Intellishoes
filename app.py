@@ -1,9 +1,13 @@
+from os.path import join, dirname, os
+from dotenv import load_dotenv
 from flask import Flask
 from flask import jsonify
 import pymongo
 
 app = Flask(__name__)
-uri = 'mongodb://heroku_qg4xxhbq:2jb487u6ota241oqoh7vgpd9tj@ds119210.mlab.com:19210/heroku_qg4xxhbq'
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
+uri = os.environ.get("MONGODB_URI")
 client = pymongo.MongoClient(uri)
 db = client.get_default_database()
 
