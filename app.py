@@ -2,6 +2,7 @@ from os.path import join, dirname, os
 from dotenv import load_dotenv
 from flask import Flask
 from flask import jsonify
+import time
 import pymongo
 
 app = Flask(__name__)
@@ -17,6 +18,8 @@ def index():
 
 @app.route('/post_ip_address/<ip_address>')
 def post_ip_address(ip_address):
+    connections_db = db["connections"]
+    connections_db.insert_one({'ip_address': ip_address, 'time': time.strftime("%a, %d %b %Y %H:%M:%S")})
     return ip_address
 
 if __name__ == "__main__":
