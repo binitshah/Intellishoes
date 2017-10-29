@@ -1,0 +1,5 @@
+#!/bin/sh
+ip=$(/sbin/ip -o -4 addr list wlan0 | awk '{print $4}' | cut -d/ -f1)
+base_url="https://intellishoes.herokuapp.com/post_ip_address/"
+base_url="$base_url$ip"
+curl $base_url
